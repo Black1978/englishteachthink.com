@@ -1,0 +1,86 @@
+@import '../../style.scss';
+
+.rightBar {
+    @include themify($themes) {
+        flex: 3;
+        position: sticky;
+        top: 50px;
+        height: calc(100vh - 50px);
+        overflow: scroll;
+        background-color: themed('bgSoft');
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .container {
+            padding: 20px;
+            .item {
+                padding: 20px;
+                -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+                -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+                box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+                margin: 20px 0;
+                background-color: themed('bg');
+                span {
+                    color: gray;
+                }
+                .user {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 20px 0px;
+
+                    .userInfo {
+                        display: flex;
+                        align-items: center;
+                        gap: 20px;
+                        position: relative;
+
+                        img {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            overflow: hidden;
+                            object-fit: cover;
+                        }
+                        .online {
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 50%;
+                            background-color: limegreen;
+                            position: absolute;
+                            top: 0;
+                            left: 30px;
+                        }
+                        span {
+                            color: themed('textColor');
+                            font-weight: 500;
+                        }
+                        p {
+                            color: themed('textColor');
+                        }
+                    }
+                    .buttons {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        button {
+                            border: none;
+                            color: white;
+                            cursor: pointer;
+                            padding: 5px;
+
+                            &:first-child {
+                                background-color: red;
+                            }
+                            &:last-child {
+                                background-color: green;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

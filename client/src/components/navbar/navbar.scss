@@ -1,0 +1,61 @@
+@import '../../style.scss';
+
+.navbar {
+    @include themify($themes) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        height: 50px;
+        border-bottom: 1px solid themed('border');
+        position: sticky;
+        top: 0;
+        background-color: themed('bg');
+        color: themed('textColor');
+        .left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            .logoWrapper {
+                svg {
+                    width: 200px;
+                    height: 100%;
+                }
+            }
+            .search {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                border: 2px solid themed('border');
+                padding: 1px;
+                input {
+                    border: none;
+                    width: 500px;
+                    background-color: transparent;
+                    color: themed('textColor');
+                }
+            }
+        }
+        .right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .user {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                img {
+                    width: 30px;
+                    height: 30px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    overflow: hidden;
+                }
+                span {
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
