@@ -6,13 +6,16 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined'
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import { Link } from 'react-router-dom'
-import Icon from '../IconForNavbar'
+import Icon from '../icons/IconForNavbar'
 import { useContext } from 'react'
 import { DarkModeContext } from '../../context/darkModeContext'
+import { AuthContext } from '../../context/authContext'
 
 const NavBar = () => {
-    const {toggle} = useContext(DarkModeContext)
+    const { toggle, darkMode } = useContext(DarkModeContext)
+    const {currentUser} = useContext(AuthContext)
     return (
         <div className='navbar'>
             <div className='left'>
@@ -20,7 +23,12 @@ const NavBar = () => {
                     <Icon />
                 </Link>
                 <HomeOutlinedIcon />
-                <DarkModeOutlinedIcon onClick={toggle}/>
+                {darkMode ? (
+                    <WbSunnyOutlinedIcon onClick={toggle} />
+                ) : (
+                    <DarkModeOutlinedIcon onClick={toggle} />
+                )}
+
                 <GridViewOutlinedIcon />
                 <div className='search'>
                     <SearchOutlinedIcon />
@@ -28,13 +36,16 @@ const NavBar = () => {
                 </div>
             </div>
             <div className='right'>
-              <PersonOutlinedIcon/>
-              <EmailOutlinedIcon/>
-              <NotificationsOutlinedIcon/>
-              <div className="user">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-                <span>Joe Doe</span>
-              </div>
+                <PersonOutlinedIcon />
+                <EmailOutlinedIcon />
+                <NotificationsOutlinedIcon />
+                <div className='user'>
+                    <img
+                        src={currentUser.profilePic}
+                        alt=''
+                    />
+                    <span>{currentUser.name}</span>
+                </div>
             </div>
         </div>
     )

@@ -1,2 +1,2 @@
 # Complete Social Network App, Back-end witn Node.js & Front-end with React.js 
- Express.jsg, Mysql bd
+ Express.js, Mysql bd.
